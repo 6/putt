@@ -46,10 +46,10 @@ class exports.Putt
   email: (text, options = {}) =>
     #TODO config here is bad
     r_nodemailer.SMTP =
-      host: @config.host
-      port: @config.port
-      ssl: @config.ssl
-      use_authentication: @config.use_authentication
+      host: @config.host || 'smtp.gmail.com'
+      port: @config.port || 465
+      ssl: @config.ssl || true
+      use_authentication: @config.use_authentication || true
       user: @config.user
       pass: @config.pass
     options.sender ?= @config.user

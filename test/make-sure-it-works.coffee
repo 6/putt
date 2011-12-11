@@ -34,11 +34,7 @@ putt(
 
 # test email
 putt(
-  host: 'smtp.gmail.com'
-  port: 465
-  ssl: true
-  use_authentication: true
   user: secrets.email.username
   pass: secrets.email.password
-).email("Test email 123", {to: secrets.email.recipient}).done ->
+).email("Test email 123", {to: secrets.email.recipient, subject: 'yo'}).done ->
   console.log "email sent!"

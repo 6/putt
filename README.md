@@ -102,16 +102,24 @@ Options:
 
 ## Email
 
+By default, email assumes that the sender is a Gmail user.
+
 ```javascript
 putt({
-    host: 'smtp.gmail.com',
-    port: 465,
-    ssl: true,
-    use_authentication: true,
     user: 'sender@gmail.com',
     pass: 'sender_password'
-}).email("Body of email", {to: 'recipient@gmail.com', subject: 'yo'});
+}).email("Body of email", {to: 'recipient@example.com', subject: 'yo'});
 ```
+
+Options:
+
+* `to` (required) the recipient email address
+* `subject` the subject for the email
+* `host` the SMTP host
+* `port` (integer) the SMTP port
+* `ssl` (boolean) whether or not to use SSL
+
+[See nodemailer docs](https://github.com/andris9/nodemailer) for more details
 
 ## Tweet
 
