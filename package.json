@@ -1,7 +1,7 @@
 {
   "author": "Peter Graham",
   "name": "putt",
-  "description": "output text to tons of formats: speech, growl, email, etc",
+  "description": "easily output text in lots of fun ways (speech, growl, email, ...)",
   "version": "0.0.2",
   "homepage": "https://github.com/6/putt",
   "repository": {
