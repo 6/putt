@@ -1,8 +1,10 @@
 **putt** is a node.js module that lets you easily output text in lots of fun ways. It wraps a bunch of other libraries to make this as simple as possible.
 
-    var putt = require('putt');
-    putt().speak("This is spoken aloud by your computer");
-    putt().desktop_notify("This appears as a desktop notification");
+```javascript
+var putt = require("putt");
+putt().speak("This is spoken aloud by your computer");
+putt().desktop_notify("This appears as a desktop notification");
+```
 
 Supported output formats:
 
@@ -30,7 +32,9 @@ For `desktop_notify` to work, install:
 
 All output types take an options hash (optional), e.g.:
 
-    putt().speak("I am talking", {voice: "Bruce"});
+```javascript
+putt().speak("I am talking", {voice: "Bruce"});
+```
 
 All output types also have two optional callbacks that can be chained:
 
@@ -39,21 +43,27 @@ All output types also have two optional callbacks that can be chained:
 
 For example:
 
-    putt().speak("I am talking").done(function() {
-        console.log("Finished talking");
-    }).error(function(reason) {
-        console.log("Something went wrong:", reason);
-    });
+```javascript
+putt().speak("I am talking").done(function() {
+    console.log("Finished talking");
+}).error(function(reason) {
+    console.log("Something went wrong:", reason);
+});
+```
 
 Note that you can chain these method calls in any order:
 
-    putt().done(function() {
-        console.log("Finished talking");
-    }).speak("I am talking");
+```javascript
+putt().done(function() {
+    console.log("Finished talking");
+}).speak("I am talking");
+```
 
 ## Speech
 
-    putt().speak("This is spoken");
+```javascript
+putt().speak("This is spoken");
+```
     
 Options:
 
@@ -63,7 +73,9 @@ Options:
 
 ## Desktop notification
 
-    putt().desktop_notify("This is a desktop notification");
+```javascript
+putt().desktop_notify("This is a desktop notification");
+```
 
 Options:
 
@@ -77,7 +89,9 @@ Options:
 
 ## POST request
 
-    putt().post({param1: value1, param2: value2}, {url: 'http://example.com/whatever'});
+```javascript
+putt().post({param1: "value1", param2: "value2"}, {url: 'http://example.com/whatever'});
+```
 
 Options:
 
@@ -96,9 +110,11 @@ First, [create a new Twitter application](https://dev.twitter.com/apps/new), and
 
 Next, provide those keys and secrets to putt when you call it:
 
-    putt({
-        consumer_key: "your consumer key",
-        consumer_secret: "your consumer secret",
-        access_token: "your access token",
-        access_token_secret: "your access token secret"
-    }).tweet("This text will be tweeted by your account");
+```javascript
+putt({
+    consumer_key: "your consumer key",
+    consumer_secret: "your consumer secret",
+    access_token: "your access token",
+    access_token_secret: "your access token secret"
+}).tweet("This text will be tweeted by your account");
+```
