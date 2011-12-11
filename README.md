@@ -102,7 +102,16 @@ Options:
 
 ## Email
 
-TODO
+```javascript
+putt({
+    host: 'smtp.gmail.com',
+    port: 465,
+    ssl: true,
+    use_authentication: true,
+    user: 'sender@gmail.com',
+    pass: 'sender_password'
+}).email("Body of email", {to: 'recipient@gmail.com', subject: 'yo'});
+```
 
 ## Tweet
 
