@@ -30,3 +30,14 @@ putt(
   access_token: secrets.twitter.access_token
   access_token_secret: secrets.twitter.access_token_secret
 ).tweet("test tweet from twitter API").error((reason) -> console.log reason)
+
+# test email
+putt(
+  host: 'smtp.gmail.com'
+  port: 465
+  ssl: true
+  use_authentication: true
+  user: secrets.email.username
+  pass: secrets.email.password
+).email("Test email 123", {to: secrets.email.recipient}).done ->
+  console.log "email sent!"

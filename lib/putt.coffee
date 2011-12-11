@@ -6,6 +6,7 @@ r_growl = require 'growl'
 r_say = require 'say'
 r_restler = require 'restler'
 r_ntwitter = require 'ntwitter'
+r_nodemailer = require 'nodemailer'
 
 class exports.Putt
   constructor: (@config) ->
@@ -39,7 +40,28 @@ class exports.Putt
       @on_error("Please specify a URL")
     this
   
+  email: (text, options = {}) =>
+    #TODO config here is bad
+    r_nodemailer.SMTP =
+      host: @config.host
+      port: @config.port
+      ssl: @config.ssl
+      use_authentication: @config.use_authentication
+      user: @config.user
+      pass: @config.pass
+    options.sender ?= @config.user
+    options.subject ?= "Hello"
+    options.body = text
+    r_nodemailer.send_mail(options, (error, success) =>
+      if success?
+        @on_done()
+      else
+        if error? then @on_error(error) else @on_error("Server wasn't able to process message correctly")
+    )
+    this
+  
   tweet: (text, options = {}) =>
+    #TODO config here is bad
     twitter = new r_ntwitter(
       consumer_key: @config.consumer_key
       consumer_secret: @config.consumer_secret

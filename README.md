@@ -9,9 +9,9 @@ Supported output formats:
 * Speech synthesizer (by [say.js](https://github.com/Marak/say.js))
 * Desktop notification (by [node-growl](https://github.com/visionmedia/node-growl))
 * POST request (by [restler](https://github.com/danwrong/restler))
-* TODO: Email (by [nodemailer](https://github.com/andris9/nodemailer))
+* Email (by [nodemailer](https://github.com/andris9/nodemailer))
 * Tweet (by [ntwitter](https://github.com/AvianFlu/ntwitter))
-* More coming soon... (SMS/call - twilio API, twitter/fb, ???)
+* More coming soon... (SMS/call - twilio API, ???)
 
 # Install
 
