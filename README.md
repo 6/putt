@@ -14,7 +14,9 @@ Supported output formats:
 
 # Install
 
-TODO
+First, install [Node.JS](http://nodejs.org/) and [NPM](http://npmjs.org/) if you haven't already. Then, just `cd` into your project folder and run:
+
+    npm install putt
 
 # Usage
 
@@ -34,10 +36,21 @@ For `desktop_notify` output to work, install:
 
 ### POST request output
 
-Example usage:
-
 TODO
 
 ### Email output
 
 TODO
+
+### Twitter
+
+First, [create a new Twitter application](https://dev.twitter.com/apps/new), and under the "Settings" tab, you will also want to give your app "Read and write" permissions so that we can write a tweet. Then, click the button at the bottom of the "Details" tab to generate an access token and secret.
+
+Next, provide those keys and secrets to putt when you call it:
+
+    putt({
+        consumer_key: "your consumer key",
+        consumer_secret: "your consumer secret",
+        access_token: "your access token",
+        access_token_secret: "your access token secret"
+    }).tweet("This text will be tweeted by your account");
