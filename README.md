@@ -1,7 +1,5 @@
 **putt** is a node.js module that lets you easily output text in lots of fun ways. It wraps a bunch of other libraries to make this as simple as possible.
 
-### Basic example
-
     var putt = require('putt');
     putt().speak("This is spoken aloud by your computer");
     putt().desktop_notify("This appears as a desktop notification");
