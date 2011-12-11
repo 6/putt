@@ -33,7 +33,10 @@ class exports.Putt
     this
   
   post: (query_hash, options = {}) =>
-    r_restler.post(options.url, {data: query_hash}).on('success', @on_done).on('error', @on_error)
+    if options.url?
+      r_restler.post(options.url, {data: query_hash}).on('success', @on_done).on('error', @on_error)
+    else
+      @on_error("Please specify a URL")
     this
   
   tweet: (text, options = {}) =>
