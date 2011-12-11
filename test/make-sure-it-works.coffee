@@ -13,10 +13,11 @@ server = express.createServer()
 server.use(express.bodyParser())
 server.post '/cool', (req, res) ->
   console.log "Received POST body:", req.body
+  console.log "Received user-agent:", req.headers['user-agent']
   res.send ""
 server.listen 3123
 
-putt().post({"hot":"dog", "ham":"burger"}, {url: "http://localhost:3123/cool"})
+putt().post({"hot":"dog", "ham":"burger"}, {url: "http://localhost:3123/cool", headers: {"User-Agent": "not Google Chrome!"}})
 .error (reason) ->
   console.log "PROBLEM..? #{reason}"
 .done ->

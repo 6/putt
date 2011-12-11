@@ -35,7 +35,10 @@ class exports.Putt
   
   post: (query_hash, options = {}) =>
     if options.url?
-      r_restler.post(options.url, {data: query_hash}).on('success', @on_done).on('error', @on_error)
+      url = options.url
+      delete options.url
+      options.data = query_hash
+      r_restler.post(url, options).on('success', @on_done).on('error', @on_error)
     else
       @on_error("Please specify a URL")
     this

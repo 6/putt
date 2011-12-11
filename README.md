@@ -82,7 +82,7 @@ Options:
 Options:
 
 * `url` (required) the URL to POST to
-* TODO - support more options
+* `headers` a hash of HTTP headers to be sent
 
 [See restler docs](https://github.com/danwrong/restler) for more details
 
