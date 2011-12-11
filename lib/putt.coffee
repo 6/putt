@@ -5,6 +5,7 @@ unless process.platform in ['darwin', 'linux']
 r_growl = require 'growl'
 r_say = require 'say'
 r_restler = require 'restler'
+r_ntwitter = require 'ntwitter'
 
 class exports.Putt
   constructor: (@config) ->
@@ -33,6 +34,20 @@ class exports.Putt
   
   post: (query_hash, options = {}) =>
     r_restler.post(options.url, {data: query_hash}).on('success', @on_done).on('error', @on_error)
+    this
+  
+  tweet: (text, options = {}) =>
+    twitter = new r_ntwitter(
+      consumer_key: @config.consumer_key
+      consumer_secret: @config.consumer_secret
+      access_token_key: @config.access_token
+      access_token_secret: @config.access_token_secret
+    )
+    twitter.verifyCredentials((err, data) =>
+      @on_error(err) if err?
+    ).updateStatus(text, (err, data) =>
+      if err? then @on_error(err) else @on_done()
+    )    
     this
   
   # below methods shouldn't be called directly

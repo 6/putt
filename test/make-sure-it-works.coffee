@@ -1,7 +1,7 @@
 # TODO in package.json put kyuri or jasmine (under devDependencies)
 # also add "scripts": { "test": "vows --spec" } or jasmine equivalent
 
-putt = require './index'
+putt = require '../index'
 
 # test speaking and desktop notifications
 putt().speak("Test 123 yoyo wassup").done ->
@@ -21,3 +21,12 @@ putt().post({"hot":"dog", "ham":"burger"}, {url: "http://localhost:3123/cool"})
   console.log "PROBLEM..? #{reason}"
 .done ->
   console.log "Done POSTing"
+  
+# test twitter
+secrets = require './secrets'
+putt(
+  consumer_key: secrets.twitter.consumer_key
+  consumer_secret: secrets.twitter.consumer_secret
+  access_token: secrets.twitter.access_token
+  access_token_secret: secrets.twitter.access_token_secret
+).tweet("test tweet from twitter API").error((reason) -> console.log reason)
