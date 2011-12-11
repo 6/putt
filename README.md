@@ -115,6 +115,11 @@ Options:
 
 * `to` (required) the recipient email address
 * `subject` the subject for the email
+
+Config:
+
+* `user` username (email address) used for authentication
+* `pass` password used for authentication
 * `host` the SMTP host
 * `port` (integer) the SMTP port
 * `ssl` (boolean) whether or not to use SSL
