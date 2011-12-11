@@ -53,7 +53,6 @@ class exports.Putt
       user: @config.user
       pass: @config.pass
     options.sender ?= @config.user
-    options.subject ?= "Hello"
     options.body = text
     r_nodemailer.send_mail(options, (error, success) =>
       if success?
