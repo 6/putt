@@ -1,7 +1,7 @@
 # TODO in package.json put kyuri or jasmine (under devDependencies)
 # also add "scripts": { "test": "vows --spec" } or jasmine equivalent
 
-putt = require './lib/putt'
+putt = require './index'
 
 # test speaking and desktop notifications
 putt().speak("Test 123 yoyo wassup").done ->

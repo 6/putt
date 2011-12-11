@@ -6,7 +6,7 @@ r_growl = require 'growl'
 r_say = require 'say'
 r_restler = require 'restler'
 
-class Putt
+class exports.Putt
   constructor: (@config) ->
     #TODO eventually do stuff with config (email, etc)
     @done_fn
@@ -43,5 +43,3 @@ class Putt
   on_error: (reason) =>
     @errored = reason || true
     @error_fn(reason) if @error_fn?
-
-module.exports = (config) -> new Putt(config)

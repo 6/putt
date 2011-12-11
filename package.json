@@ -2,7 +2,7 @@
   "author": "Peter Graham",
   "name": "putt",
   "description": "output text to tons of formats: speech, growl, email, etc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/6/putt",
   "repository": {
     "type": "git",
@@ -25,5 +25,5 @@
   "directories": {
     "lib": "./lib"
   },
-  "main": "./lib/putt"
+  "main": "./index"
 }
