@@ -28,6 +28,21 @@ For `desktop_notify` to work, install:
 
 # Usage
 
+All output types have two optional callbacks that can be chained on:
+
+* `done()` is called when the output finishes outputting
+* `error(reason)` is called when an error is encountered during output
+
+For example:
+
+    putt().speak("I am talking").done(function() {
+        console.log("Finished talking");
+    }).error(function(reason) {
+        console.log("Something went wrong:", reason);
+    });
+
+Note that you can chain these method calls in any order.
+
 ### Speech
 
 TODO
