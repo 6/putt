@@ -28,7 +28,11 @@ For `desktop_notify` to work, install:
 
 # Usage
 
-All output types have two optional callbacks that can be chained on:
+All output types take an options hash (optional), e.g.:
+
+    putt().speak("I am talking", {voice: "Bruce"});
+
+All output types also have two optional callbacks that can be chained:
 
 * `done()` is called when the output finishes outputting
 * `error(reason)` is called when an error is encountered during output
@@ -41,25 +45,52 @@ For example:
         console.log("Something went wrong:", reason);
     });
 
-Note that you can chain these method calls in any order.
+Note that you can chain these method calls in any order:
 
-### Speech
+    putt().done(function() {
+        console.log("Finished talking");
+    }).speak("I am talking");
+
+## Speech
+
+    putt().speak("This is spoken");
+    
+Options:
+
+* `voice` the voice to use when speaking.
+
+[See say.js docs](https://github.com/Marak/say.js) for a full list of voices
+
+## Desktop notification
+
+    putt().desktop_notify("This is a desktop notification");
+
+Options:
+
+* `title` the title of the notification window
+* `name` the name of the application
+* `priority` (integer) the priority of the notification (default is 0)
+* `sticky` (boolean) if notification should fade away or not
+* `image` custom image to show along with notification
+
+[See node-growl docs](https://github.com/visionmedia/node-growl) for more details
+
+## POST request
+
+    putt().post({param1: value1, param2: value2}, {url: 'http://example.com/whatever'});
+
+Options:
+
+* `url` (required) the URL to POST to
+* TODO - support more options
+
+[See restler docs](https://github.com/danwrong/restler) for more details
+
+## Email
 
 TODO
 
-### Desktop notification
-
-TODO
-
-### POST request
-
-TODO
-
-### Email
-
-TODO
-
-### Tweet
+## Tweet
 
 First, [create a new Twitter application](https://dev.twitter.com/apps/new), and under the "Settings" tab, you will also want to give your app "Read and write" permissions so that we can write a tweet. Then, click the button at the bottom of the "Details" tab to generate an access token and secret.
 
